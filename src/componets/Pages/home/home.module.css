@@ -54,7 +54,7 @@
     padding-left: 500px;
     padding-right: 500px;
 }
-.levo{
+/* .levo{
     color: rgba(112, 26, 233, 0.947);
     font-size: 60px;
     padding-left: 400px;
@@ -76,5 +76,21 @@
     color: rgba(112, 26, 233, 0.947);
     font-size: 60px;
     padding-left: 1100px;
+} */
+
+.about {
+    display: flex;
+    flex-direction: column;
 }
 
+.top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 60px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 60px;
+}
