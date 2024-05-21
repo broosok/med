@@ -16,8 +16,8 @@ export const NavigateFadeUI = () => {
         navigate(navigation);
         setTimeout(() => {
           setNavigation(null);
-        }, 50);
-      }, 950);
+        }, 500);
+      }, 500);
     }
   }, [navigation]);
 
