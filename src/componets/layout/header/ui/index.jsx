@@ -17,11 +17,12 @@ import { RiMenuFill, RiUser3Line } from "react-icons/ri";
 import { $mobileMenu, setMobileMenu } from "../model/mobile-menu";
 import { MobileMenuUI } from "./mobile-menu";
 import { setNavigation } from "../../../navgiation";
-import { $cart, setCartShow } from "../model/cart";
+import { $cart, setCartShow, $groupCard } from "../model/cart";
 import styled from "styled-components";
 
 export const HeaderUI = () => {
   const cart = useUnit($cart);
+  const groupCart = useUnit($groupCard);
   const [animation, setAnimation] = useState(false);
   let [cartOpen, setCartOpen] = useState(false);
   const { city } = useGeo();
@@ -85,12 +86,11 @@ export const HeaderUI = () => {
           {user.username}
           {user.username && <div onClick={() => logoutRequestFx()}>Выйти</div>}
         </div>
-        <Cart>
+        <Cart onClick={() => setCartShow(true)}>
           <FaShoppingBag
-            onClick={() => setCartShow(true)}
             className={`${style.shopcart} ${cartOpen && style.active}`}
           ></FaShoppingBag>
-          <Number>{cart.length}</Number>
+          <Number>{groupCart.length}</Number>
         </Cart>
       </div>
       <div className={style.mobile_menu} onClick={() => setMobileMenu(true)}>

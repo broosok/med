@@ -51,10 +51,17 @@ export const CardUI = ({
   }, [animation]);
 
   const addToCart = () => {
-    setCart({ _id, brand, image, price, sizes, subtitle, title });
+    setCart({ _id, brand, image, price, sizes, subtitle, title, size });
   };
 
   const [size, setSize] = useState(null);
+
+  const addToCartFn = () => {
+    if (!size) return;
+
+    addToCart();
+    setAnimation(true);
+  };
 
   if (!price) {
     return (
@@ -83,11 +90,8 @@ export const CardUI = ({
       </div>
 
       <button
-        className={`${style.button}`}
-        onClick={() => {
-          addToCart();
-          setAnimation(true);
-        }}
+        className={`${style.button} ${!size && style.button_disabled}`}
+        onClick={addToCartFn}
       >
         В корзину
       </button>

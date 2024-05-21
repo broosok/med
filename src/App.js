@@ -6,6 +6,7 @@ import { FooterUI } from "./componets/layout/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NavigateFadeUI } from "./componets/navigate-fade";
 import { CartUI } from "./componets/layout/header/ui/cart";
+import "core-js/actual";
 
 function App() {
   return (

@@ -23,5 +23,6 @@ router.post(
 );
 
 router.get("/get_all", controller.getGoods);
+router.post("/order", roleMiddlewere(["USER"]), controller.orderGoods);
 
 module.exports = router;
