@@ -17,8 +17,11 @@ import { RiMenuFill, RiUser3Line } from "react-icons/ri";
 import { $mobileMenu, setMobileMenu } from "../model/mobile-menu";
 import { MobileMenuUI } from "./mobile-menu";
 import { setNavigation } from "../../../navgiation";
+import { $cart, setCartShow } from "../model/cart";
+import styled from "styled-components";
 
 export const HeaderUI = () => {
+  const cart = useUnit($cart);
   const [animation, setAnimation] = useState(false);
   let [cartOpen, setCartOpen] = useState(false);
   const { city } = useGeo();
@@ -82,10 +85,13 @@ export const HeaderUI = () => {
           {user.username}
           {user.username && <div onClick={() => logoutRequestFx()}>Выйти</div>}
         </div>
-        <FaShoppingBag
-          onClick={() => setCartOpen((cartOpen = !cartOpen))}
-          className={`${style.shopcart} ${cartOpen && style.active}`}
-        ></FaShoppingBag>
+        <Cart>
+          <FaShoppingBag
+            onClick={() => setCartShow(true)}
+            className={`${style.shopcart} ${cartOpen && style.active}`}
+          ></FaShoppingBag>
+          <Number>{cart.length}</Number>
+        </Cart>
       </div>
       <div className={style.mobile_menu} onClick={() => setMobileMenu(true)}>
         <RiMenuFill />
@@ -93,3 +99,20 @@ export const HeaderUI = () => {
     </header>
   );
 };
+
+const Cart = styled.div`
+  position: relative;
+`;
+const Number = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  background-color: #ff6f00;
+  border-radius: 100%;
+  bottom: -6.5px;
+  right: -6.5px;
+`;

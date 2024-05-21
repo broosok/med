@@ -19,7 +19,7 @@ export function Home() {
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
-        <MovingText />
+        {/* <MovingText /> */}
         <SliderUI />
         <div className={style.wrapper}>
           <div className={style.container}>

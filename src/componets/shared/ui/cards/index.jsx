@@ -3,6 +3,7 @@ import { getAllGoodsRequest } from "../../../hooks/good";
 import { chunk } from "lodash";
 import style from "./cards.module.css";
 import React from "react";
+import { setCart } from "../../../layout/header/model/cart";
 
 export const CardsUI = () => {
   const [goods, setGoods] = useState([]);
@@ -49,6 +50,10 @@ export const CardUI = ({
     }, 200);
   }, [animation]);
 
+  const addToCart = () => {
+    setCart({ _id, brand, image, price, sizes, subtitle, title });
+  };
+
   const [size, setSize] = useState(null);
 
   if (!price) {
@@ -77,7 +82,13 @@ export const CardUI = ({
         ))}
       </div>
 
-      <button className={`${style.button}`} onClick={() => setAnimation(true)}>
+      <button
+        className={`${style.button}`}
+        onClick={() => {
+          addToCart();
+          setAnimation(true);
+        }}
+      >
         В корзину
       </button>
     </div>
