@@ -1,0 +1,309 @@
+
+.chelka {
+    top: 0px;
+    height: 120px;
+    position: sticky;
+   
+    background: #fff;
+    padding: 16px;
+    z-index: 100;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .logo {
+    color: rgb(3, 3, 3);
+    border: 0;
+    background: none;
+    
+    font-family: Impact;
+    height: auto;
+    width: 300px;
+    font-size: 50px;
+    cursor: pointer;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    
+  }
+  
+  .buuttoncolor {
+    color: #0b0c0c;
+    display: block;
+    text-decoration: none;
+    transition: color 500ms ease;
+    float: left;
+    font-size: larger;
+   
+    
+    cursor: pointer;
+    font-size: 30px;
+    background: none;
+    border: 0;
+    font-family: Arial;
+    font-weight: bold;
+    display: flex;
+    
+  }
+  .buuttoncolor:hover{
+    color: rgb(37, 150, 156);
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 32px;
+    align-items: center;
+  }
+  
+  .logo_a {
+    color: #0b0c0c;
+    text-decoration: none;
+  }
+  
+  
+  
+  /* Стили главного текста
+  */
+  
+  .tag {
+    color: black;
+    display: flex;
+    margin-top: 200px;
+    margin-left: -10%;
+    font-size: 70px;
+    margin-bottom: 10px;
+    animation: RightToLeft 2s ease-in-out forwards;
+    
+  }
+  
+  @keyframes leftToRight {
+    from {
+      transform: translateX(-100%)
+    }
+    to {
+      transform: translateX(0%)
+    }
+  }
+  
+  @keyframes RightToLeft {
+    from {
+      transform: translateX(100%)
+    }
+    to {
+      transform: translateX(0%)
+    }
+  }
+  
+  .tag2 {
+    color: black;
+    display: flex;
+    margin-left: 2%;
+    font-size: 70px;
+    margin-bottom: 10px;
+    animation: 'test';
+    animation: leftToRight 2s ease-in-out forwards;
+    
+  }
+  .tag3{
+    color: rgb(37, 150, 156);
+    display: flex;
+    margin-right: 2%;
+    margin-left: 2%;
+    font-size: 70px;
+    
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .container {
+    width: 1040px;
+  }
+  
+  /* Стили слайдера
+  */
+  
+  .contener {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Стили текста
+  */
+  
+  .text{
+    font-family: Arial;
+    color: black;
+    margin-left: 90px;
+    font-weight: bold;
+    line-height: 10;
+    font-size: 50px;
+    display: flex;
+    
+  }
+  .text2{
+    font-family: Arial;
+    color: black;
+    margin-left: 600px;
+    font-weight: bold;
+    line-height: 10;
+    font-size: 50px;
+    display: flex;
+    
+    
+  }
+  
+  .page {
+    margin-top: 166px;
+    overflow: hidden;
+    margin-bottom: 466px;
+  }
+  
+  .wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .page {
+    width: 100%;
+  }
+  
+  .shopcart{
+    float: right;
+    cursor: pointer;
+    transition: color 500ms ease;
+    align-items: center;
+    display: flex;
+    width: 30px;
+    height: 30px;
+  }
+  .shopcart:hover
+   {
+   color: rgb(37, 150, 156);
+  }
+  
+  .active{
+    color: rgb(37, 150, 156);
+    
+  }
+  
+  .card{
+    position: absolute;
+    top: 120px;
+    right: 0;
+    width: 500px;
+    min-width: 100px;
+    background: #fff;
+    -webkit-box-shadow: 30px -8px 36px -3px rgba(28, 208, 200, 0.2);
+    -moz-box-shadow: 30px -8px 36px -3px rgba(28, 208, 200, 0.2);
+    box-shadow: 30px -8px 36px -3px rgba(28, 208, 200, 0.2);
+    z-index: 1000;
+    cursor: auto;
+  }
+  
+  .pokypka{
+    
+    
+    margin-left: 40px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .gorod{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: auto;
+    
+  }
+  .gorod u {
+        font-size: 16px;
+  }
+
+  .right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-left: 100px;
+  }
+
+  .user {
+    display: flex;
+  }
+
+  .user div:last-child {
+    color: red;
+    margin-left: 4px;
+  }
+
+  .role {
+    color: green;
+  }
+
+  .mobile_menu {
+    display: none;
+  }
+
+  .mobile_header {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0b0c0c;
+    z-index: 50;
+    color: #fff;
+  }
+
+  .mobile_header > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    padding: 16px;
+  }
+
+  .mobile_close {
+    font-size: 56px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .gorod {
+      display: none;
+    }
+    .buuttoncolor  {
+      display: none;
+    }
+
+    .right {
+      display: none;
+    }
+
+    .logo {
+      width: initial;
+    }
+
+    .mobile_menu {
+      display: block;
+      font-size: 56px;
+    }
+
+    .logo_mobile {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+

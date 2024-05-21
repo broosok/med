@@ -1,0 +1,80 @@
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.hog{
+    margin-top: 100px;
+
+}
+.page{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    .card {
+        width: calc(50% - 8px);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .card {
+        width: 100%;
+    }
+
+    .cards {
+        gap: 0px;
+    }
+}
+
+.gup{
+    padding-left: 500px;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    padding-bottom: 10px;
+}
+.textcolor{
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgba(112, 26, 233, 0.947);
+}
+.text{
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 500px;
+    padding-right: 500px;
+}
+.levo{
+    color: rgba(112, 26, 233, 0.947);
+    font-size: 60px;
+    padding-left: 400px;
+}
+
+.levo2{
+    color: rgba(112, 26, 233, 0.947);
+    font-size: 60px;
+    padding-left: 400px;
+}
+
+.pravo{
+    color: rgba(112, 26, 233, 0.947);
+    font-size: 60px;
+    padding-left: 1100px;
+}
+
+.pravo2{
+    color: rgba(112, 26, 233, 0.947);
+    font-size: 60px;
+    padding-left: 1100px;
+}
+

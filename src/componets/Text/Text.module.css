@@ -1,0 +1,91 @@
+.tag {
+  color: black;
+  display: flex;
+  margin-left: -10%;
+  font-size: 70px;
+  margin-bottom: 10px;
+  animation: RightToLeft 2s ease-in-out forwards;
+  
+}
+
+@keyframes leftToRight {
+  from {
+    transform: translateX(-100%)
+  }
+  to {
+    transform: translateX(0%)
+  }
+}
+
+@keyframes RightToLeft {
+  from {
+    transform: translateX(100%)
+  }
+  to {
+    transform: translateX(0%)
+  }
+}
+
+.tag2 {
+  color: black;
+  display: flex;
+  margin-left: 2%;
+  font-size: 70px;
+  margin-bottom: 10px;
+  animation: 'test';
+  animation: leftToRight 2s ease-in-out forwards;
+  
+}
+.tag3{
+  color: rgb(37, 150, 156);
+  display: flex;
+  margin-right: 2%;
+  margin-left: 2%;
+  font-size: 70px;
+  
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+
+  margin: 60px 0px;
+}
+
+.container {
+  width: 1120px;
+  left: 40px;
+  top: 200px;
+  height: 535px;
+  zoom: 1.692;
+
+}
+
+.cardlogo{
+  background: url("https://optim.tildacdn.com/tild3739-3932-4463-a237-303862643162/-/format/webp/IMG_2752_1.jpg");
+  transform-origin: center center;
+  border-radius: 20px;
+  background-position: center bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-color: transparent;
+  border-style: solid;
+  
+ 
+  
+}
+.cardlogodiv{
+    left: 40px;
+    top: 200px;
+    zoom: 1;
+    position: absolute;
+    box-sizing: border-box;
+    display: table;
+
+    z-index: 11;
+    top: -560px;
+    width: 1120px;
+    height: 450px;
+    
+}
+
