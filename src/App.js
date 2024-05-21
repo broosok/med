@@ -6,6 +6,7 @@ import { FooterUI } from "./componets/layout/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  console.log("test github");
   return (
     <>
       <HeaderUI />
