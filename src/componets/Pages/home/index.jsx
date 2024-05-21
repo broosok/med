@@ -43,18 +43,20 @@ export function Home() {
                     <RxCornerTopRight />
                   </a>
                 </div>
-                <div className={style.gup}>О проекте</div>
-                <div className={style.text}>
-                  DLVB –
-                  <a className={style.textcolor}>
-                    магазин лимитированных кроссовок.
-                  </a>
-                  Мы помогаем в приобретении желанных
-                  <a className={style.textcolor}> лимитированных</a> моделей
-                  кроссовок в короткий срок, с гарантией их подлинности. Каждый
-                  товар проходит проверку на
-                  <a className={style.textcolor}> оригинальность</a> этим
-                  занимается проффесионал.
+                <div className={style.center}>
+                  <div className={style.gup}>О проекте</div>
+                  <div className={style.text}>
+                    DLVB –
+                    <a className={style.textcolor}>
+                      магазин лимитированных кроссовок.
+                    </a>
+                    Мы помогаем в приобретении желанных
+                    <a className={style.textcolor}> лимитированных</a> моделей
+                    кроссовок в короткий срок, с гарантией их подлинности.
+                    Каждый товар проходит проверку на
+                    <a className={style.textcolor}> оригинальность</a> этим
+                    занимается проффесионал.
+                  </div>
                 </div>
                 <div className={style.bottom}>
                   <a className={style.levo2}>

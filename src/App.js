@@ -4,10 +4,12 @@ import { HeaderUI } from "./componets";
 import React from "react";
 import { FooterUI } from "./componets/layout/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { NavigateFadeUI } from "./componets/navigate-fade";
 
 function App() {
   return (
     <>
+      <NavigateFadeUI />
       <HeaderUI />
       <RoutesFC />
       <FooterUI />

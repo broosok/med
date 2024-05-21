@@ -6,19 +6,28 @@ import { $user, setUser } from "../../../models/user";
 import { $basket } from "../../../cards/ui/model";
 import { useAuth } from "../../../use-auth";
 import { logoutRequest } from "../../../hooks/auth";
-import { Link } from "react-router-dom";
+import {
+  Link,
+  redirect,
+  redirectDocument,
+  useNavigate,
+} from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
 import { RiMenuFill, RiUser3Line } from "react-icons/ri";
 import { $mobileMenu, setMobileMenu } from "../model/mobile-menu";
 import { MobileMenuUI } from "./mobile-menu";
+import { setNavigation } from "../../../navgiation";
 
 export const HeaderUI = () => {
+  const [animation, setAnimation] = useState(false);
   let [cartOpen, setCartOpen] = useState(false);
   const { city } = useGeo();
   const user = useUnit($user);
   const basket = useUnit($basket);
   const mobileMenu = useUnit($mobileMenu);
   useAuth();
+
+  const navigate = useNavigate();
 
   const logoutRequestFx = async () => {
     const res = await logoutRequest();
@@ -38,23 +47,35 @@ export const HeaderUI = () => {
       </div>
 
       <div className={style.logo}>
-        <Link className={style.logo_a} to="/">
+        <a className={style.logo_a} onClick={() => setNavigation("/")}>
           DLVB
-        </Link>
+        </a>
       </div>
       <div className={style.menu}>
-        <Link className={style.buuttoncolor} to="/catalog">
+        <a
+          className={style.buuttoncolor}
+          onClick={() => setNavigation("/catalog")}
+        >
           Каталог
-        </Link>
-        <Link className={style.buuttoncolor} to="/Login">
+        </a>
+        <a
+          className={style.buuttoncolor}
+          onClick={() => setNavigation("/login")}
+        >
           Кабинет
-        </Link>
-        <Link className={style.buuttoncolor} to="/Customers">
+        </a>
+        <a
+          className={style.buuttoncolor}
+          onClick={() => setNavigation("/Customers")}
+        >
           Покупателям
-        </Link>
-        <Link className={style.buuttoncolor} to="/Contact">
+        </a>
+        <a
+          className={style.buuttoncolor}
+          onClick={() => setNavigation("/Contact")}
+        >
           Контакты
-        </Link>
+        </a>
       </div>
       <div className={style.right}>
         <div className={style.user}>
