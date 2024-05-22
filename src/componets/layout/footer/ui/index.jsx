@@ -1,5 +1,11 @@
 import React from "react";
 import style from "./Footer.module.css";
+import {
+  FaCcVisa,
+  FaCcJcb,
+  FaCreditCard,
+  FaCcMastercard,
+} from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
@@ -16,11 +22,18 @@ export const FooterUI = () => {
       </div>
       <div className={style.footer}>
         <div className={style.pages}>
-          <img src="_1.jpg" />
-
-          <img src="_2.jpg" />
-          <img src="_3.jpg" />
-          <img src="_4.jpg" />
+          <div className={style.pages1}>
+            <FaCcVisa />
+          </div>
+          <div className={style.pages1}>
+            <FaCcMastercard />
+          </div>
+          <div className={style.pages1}>
+            <FaCcJcb />
+          </div>
+          <div className={style.pages1}>
+            <FaCreditCard />
+          </div>
         </div>
         <div className={style.menu}>
           <Link className={style.info} to="/Info">
