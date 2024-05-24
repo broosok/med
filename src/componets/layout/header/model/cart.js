@@ -11,15 +11,17 @@ export const $cart = createStore(
 export const setCart = createEvent();
 
 $cart.on(setCart, (store, payload) => {
-  if (!store[payload.title]) {
-    store[payload.title] = {};
+  const name = `${payload.title}-${payload.size}`;
+
+  if (!store[name]) {
+    store[name] = {};
   }
 
-  store[payload.title] = { ...store[payload.title], ...payload };
-  if (!store[payload.title].qnty) {
-    store[payload.title].qnty = 1;
+  store[name] = { ...store[name], ...payload };
+  if (!store[name].qnty) {
+    store[name].qnty = 1;
   } else {
-    store[payload.title].qnty++;
+    store[name].qnty++;
   }
 
   return { ...store };
@@ -44,4 +46,4 @@ $cart.on(setQnty, (store, { qnty, size, title }) => {
 $cart.watch((store) => localStorage.setItem("cart", JSON.stringify(store)));
 
 export const clearCart = createEvent();
-$cart.on(clearCart, () => ({}))
+$cart.on(clearCart, () => ({}));

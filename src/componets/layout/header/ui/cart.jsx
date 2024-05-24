@@ -24,8 +24,6 @@ export const CartUI = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const orderFx = async (e) => {
     e.preventDefault();
-
-    await orderRequest({ cart: groupCart });
     setNavigation("/Order");
     setCartShow(false);
   };
@@ -62,6 +60,7 @@ export const CartUI = () => {
                 {"₽ "}
                 {x.price * x.qnty !== x.price ? `(${x.price}₽ за шт.)` : null}
               </div>
+              <div className={style.cull}>Размер: {x.size}</div>
               <div className={style.cull}>
                 Кол-во:
                 <Input

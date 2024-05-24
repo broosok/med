@@ -19,6 +19,7 @@ import { MobileMenuUI } from "./mobile-menu";
 import { setNavigation } from "../../../navgiation";
 import { $cart, setCartShow, $groupCard } from "../model/cart";
 import styled from "styled-components";
+import MONKEY from "../../../Pages/assets/monkey.jpg";
 
 export const HeaderUI = () => {
   const cart = useUnit($cart);
@@ -86,6 +87,12 @@ export const HeaderUI = () => {
           {user.username}
           {user.username && <div onClick={() => logoutRequestFx()}>Выйти</div>}
         </div>
+        <Img
+          className={style.profile__img}
+          src={MONKEY}
+          alt=""
+          onClick={() => setNavigation("/cabinet")}
+        />
         <Cart onClick={() => setCartShow(true)}>
           <FaShoppingBag
             className={`${style.shopcart} ${cartOpen && style.active}`}
@@ -99,6 +106,12 @@ export const HeaderUI = () => {
     </header>
   );
 };
+
+const Img = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+`;
 
 const Cart = styled.div`
   position: relative;

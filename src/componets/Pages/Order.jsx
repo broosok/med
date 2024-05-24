@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import style from "./Order.module.css";
 import { useUnit } from "effector-react";
 import { ContainerUI } from "../shared/ui/container";
@@ -11,10 +11,23 @@ import {
 import styled from "styled-components";
 import Swal from "sweetalert2";
 import { setNavigation } from "../navgiation";
+import { orderRequest } from "../layout/header/lib/order";
 
 export function Order() {
-  const successOrder = () => {
-    Swal.fire({
+  const successOrder = async () => {
+    const res = await orderRequest({ cart: groupCart });
+    if (res.success) {
+      Swal.fire({
+        title: "Ваш заказ успешно оформлен!",
+        html: `
+      Вы можете просмотреть его в <a href="../../Cabinet"> личном кабинете </a>
+    `,
+        icon: "success",
+      });
+      clearCart();
+      setNavigation("/cabinet");
+    }
+    /* Swal.fire({
       title: "Ваш заказ успешно оформлен!",
       html: `
     Вы можете просмотреть его в <a href="../../Cabinet"> личном кабинете </a>
@@ -22,54 +35,71 @@ export function Order() {
       icon: "success",
     });
     clearCart();
-    setNavigation("/");
+    setNavigation("/"); */
   };
   const groupCart = useUnit($groupCard);
+
+  const sum = useMemo(() => {
+    return groupCart.reduce((acc, cur) => acc + cur.price * cur.qnty, 0);
+  }, [groupCart]);
 
   return (
     <>
       <ContainerUI>
         <div className={style.contenercard}>
           <div className={style.gridtop}>
-            <Content>
-              {!groupCart.length}
-              {groupCart.map((x) => (
-                <Info>
-                  <img src={x.image} className={style.imgsize} />
-                  <Title>{x.title}</Title>
-                  <div className={style.cull}>
-                    Осталось: {x.sizes.filter((y) => y.size === x.size)[0].qnty}
-                  </div>
-                  <div className={style.cull}>
-                    Цена: {x.price * x.qnty}
-                    {"₽ "}
-                    {x.price * x.qnty !== x.price
-                      ? `(${x.price}₽ за шт.)`
-                      : null}
-                  </div>
-                  <div className={style.cull}>
-                    Кол-во:
-                    <Input
-                      value={x.qnty}
-                      type={"number"}
-                      min={1}
-                      max={x.sizes.filter((y) => y.size === x.size)[0].qnty}
-                      onChange={(e) =>
-                        setQnty({
-                          qnty: e.target.value,
-                          size: x.size,
-                          title: x.title,
-                        })
-                      }
-                    />
-                  </div>
-                  <div className={style.cull2}>
-                    Сумма: {x.price * x.qnty}
-                    {"₽ "}
-                  </div>
-                </Info>
-              ))}
-            </Content>
+            <TableWrapper>
+              <Table>
+                <Thead>
+                  <Tr>
+                    <Th>Изображение</Th>
+                    <Th>Название</Th>
+                    <Th>Цена</Th>
+                    <Th>Размер</Th>
+                    <Th>Остаток</Th>
+                    <Th>Количество</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {groupCart.map((x, i) => (
+                    <Tr key={i}>
+                      <Td>
+                        <img src={x.image} className={style.imgsize} />
+                      </Td>
+                      <Td>{x.title}</Td>
+                      <Td>{(x.price * x.qnty).toLocaleString("ru")}₽</Td>
+                      <Td>{x.size}</Td>
+                      <Td align="right">
+                        {x.sizes.filter((y) => y.size === x.size)[0].qnty}
+                      </Td>
+                      <Td align="right">
+                        <Input
+                          value={x.qnty}
+                          type={"number"}
+                          min={1}
+                          max={x.sizes.filter((y) => y.size === x.size)[0].qnty}
+                          onChange={(e) =>
+                            setQnty({
+                              qnty: e.target.value,
+                              size: x.size,
+                              title: x.title,
+                            })
+                          }
+                        />
+                      </Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+                <TFooter>
+                  <Tr>
+                    <Th colspan="3" scope="row">
+                      Сумма
+                    </Th>
+                    <Td>{sum.toLocaleString("ru")}₽</Td>
+                  </Tr>
+                </TFooter>
+              </Table>
+            </TableWrapper>
           </div>
 
           <div className={style.gridbotton}>
@@ -135,22 +165,94 @@ export function Order() {
   );
 }
 
-const Content = styled.div`
-  display: grid;
-  font-weight: bold;
-`;
-
-const Title = styled.div`
-  width: 150px;
-  height: 150px;
-  font-size: 20px;
-  font-weight: 500;
-  font-weight: bold;
-`;
-
-const Info = styled.div`
-  display: flex;
-  padding: 10px;
-  gap: 15px;
-`;
 const Input = styled.input``;
+
+const TableWrapper = styled.div`
+  max-height: 400px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 7px; /* Ширина всего элемента навигации */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #fff; /* Цвет дорожки */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6; /* Цвет бегунка */
+    border-radius: 4px; /* Округление бегунка */
+  }
+`;
+
+const Table = styled.table`
+  max-width: 100%;
+  border: 0px solid grey;
+  border-collapse: collapse;
+  border-radius: 10px;
+
+  th,
+  td {
+    border-bottom: 1px solid #f5f5f7;
+
+    padding: 16px;
+    border-collapse: collapse;
+  }
+
+  th {
+    padding: 16px;
+    font-size: 20px;
+    background: rgba(250, 251, 253, 255);
+    color: #000000;
+  }
+
+  td {
+    font-size: 18px;
+  }
+
+  thead,
+  tbody {
+    position: sticky;
+  }
+
+  table thead {
+    inset-block-start: 0; /* "top" */
+  }
+  table tfoot {
+    inset-block-end: 0; /* "bottom" */
+  }
+`;
+const Thead = styled.thead`
+  top: 0px;
+  z-index: 1;
+  background: #fff;
+
+  tr {
+    box-shadow: 0px 0px 3px 1px #d3d3d3;
+  }
+`;
+const Tbody = styled.tbody``;
+const Tr = styled.tr``;
+const Th = styled.th``;
+const Td = styled.td`
+  padding: 8px;
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
+  input {
+    width: 40px;
+    border: none;
+    background: #e9e9e9;
+  }
+`;
+const TFooter = styled.tfoot`
+  position: sticky;
+  z-index: 1;
+  bottom: -1px;
+  background: #fff;
+  th {
+    text-align: right;
+  }
+`;

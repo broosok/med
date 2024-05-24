@@ -24,5 +24,6 @@ router.post(
 
 router.get("/get_all", controller.getGoods);
 router.post("/order", roleMiddlewere(["USER"]), controller.orderGoods);
+router.get("/get_order", roleMiddlewere(["USER"]), controller.getOrder);
 
 module.exports = router;

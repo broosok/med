@@ -16,6 +16,7 @@
     "cookie-parser": "^1.4.6",
     "core-js": "^3.37.1",
     "cors": "^2.8.5",
+    "dayjs": "^1.11.11",
     "effector": "^23.2.1",
     "effector-react": "^23.2.0",
     "express": "^4.19.2",
