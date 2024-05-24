@@ -32,6 +32,10 @@ export const CartUI = () => {
 
   const removeCartFx = () => {
     clearCart();
+    if (window.location.pathname == "/Order") {
+      setNavigation("/");
+      setCartShow(false);
+    }
   };
 
   if (!cartShow) return null;
@@ -84,7 +88,7 @@ export const CartUI = () => {
         {groupCart.length > 0 ? (
           <Footer>
             <button className={style.but} onClick={orderFx}>
-              Продолжить оформления
+              Продолжить оформление
             </button>
             <button className={style.delete} onClick={removeCartFx}>
               Очистить корзину

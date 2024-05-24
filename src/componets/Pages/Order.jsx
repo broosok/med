@@ -2,20 +2,30 @@ import React from "react";
 import style from "./Order.module.css";
 import { useUnit } from "effector-react";
 import { ContainerUI } from "../shared/ui/container";
-import { $groupCard, setQnty, setCartShow } from "../layout/header/model/cart";
+import {
+  $groupCard,
+  setQnty,
+  setCartShow,
+  clearCart,
+} from "../layout/header/model/cart";
 import styled from "styled-components";
-
-import { orderRequest } from "../layout/header/lib/order";
+import Swal from "sweetalert2";
+import { setNavigation } from "../navgiation";
 
 export function Order() {
-  const groupCart = useUnit($groupCard);
-  const orderFx = async (e) => {
-    e.preventDefault();
-
-    await orderRequest({ cart: groupCart });
-
-    setCartShow(false);
+  const successOrder = () => {
+    Swal.fire({
+      title: "Ваш заказ успешно оформлен!",
+      html: `
+    Вы можете просмотреть его в <a href="../../Cabinet"> личном кабинете </a>
+  `,
+      icon: "success",
+    });
+    clearCart();
+    setNavigation("/");
   };
+  const groupCart = useUnit($groupCard);
+
   return (
     <>
       <ContainerUI>
@@ -25,7 +35,7 @@ export function Order() {
               {!groupCart.length}
               {groupCart.map((x) => (
                 <Info>
-                  <img src={x.image} />
+                  <img src={x.image} className={style.imgsize} />
                   <Title>{x.title}</Title>
                   <div className={style.cull}>
                     Осталось: {x.sizes.filter((y) => y.size === x.size)[0].qnty}
@@ -64,12 +74,12 @@ export function Order() {
 
           <div className={style.gridbotton}>
             <div>
-              <div className={style.text}>
+              <p className={style.text}>
                 Пожалуйста, внимательно заполните форму ниже.
-              </div>
-              <div className={style.text}>
+              </p>
+              <h1 className={style.text}>
                 Все цены на нашем сайте указанны с учетом доставки.
-              </div>
+              </h1>
 
               <div>
                 <span className={style.text}>Адрес доставки</span>
@@ -89,31 +99,35 @@ export function Order() {
                     type="text"
                   />
                 </div>
-                <p className={style.label}>Номер дома*</p>
-                <div>
+                <div className={style.gridtext}>
+                  <p className={style.label}>Номер дома*</p>
+                  <p className={style.label}>Кв/офис</p>
+                </div>
+                <div className={style.profile__grid2}>
                   <input
                     className={style.profile__input2}
                     placeholder="Введите дом"
                     type="text"
                   />
+                  <input className={style.profile__input2} type="text" />
                 </div>
-                <p className={style.label}>Кв/офис</p>
-                <div>
-                  <input className={style.profile__input} type="text" />
-                </div>
-                <p className={style.label}>Подъезд</p>
-                <div>
-                  <input className={style.profile__input} type="text" />
-                </div>
-                <p className={style.label}>Этаж</p>
-                <div>
-                  <input className={style.profile__input} type="text" />
+
+                <div className={style.profile__grid}>
+                  <p className={style.label}>Подъезд</p>
+                  <p className={style.label}>Этаж</p>
                   <p className={style.label}>Домофон</p>
+
+                  <input className={style.profile__input3} type="text" />
+                  <input className={style.profile__input3} type="text" />
+                  <input className={style.profile__input3} type="text" />
                 </div>
-                <input className={style.profile__input} type="text" />
               </div>
             </div>
-            <button onClick={orderFx}>Оформить заказ</button>
+            <div className={style.buttonbuy}>
+              <button className={style.buy} onClick={successOrder}>
+                <div className={style.size}>Оформить заказ</div>
+              </button>
+            </div>
           </div>
         </div>
       </ContainerUI>
@@ -122,13 +136,13 @@ export function Order() {
 }
 
 const Content = styled.div`
-  width: 150px;
-  height: 150px;
-  display: flex;
+  display: grid;
   font-weight: bold;
 `;
 
 const Title = styled.div`
+  width: 150px;
+  height: 150px;
   font-size: 20px;
   font-weight: 500;
   font-weight: bold;
@@ -136,5 +150,7 @@ const Title = styled.div`
 
 const Info = styled.div`
   display: flex;
+  padding: 10px;
+  gap: 15px;
 `;
 const Input = styled.input``;

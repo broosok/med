@@ -25,6 +25,9 @@ const errorSwal = (msg) =>
     text: msg || "Ошибка сервера",
   });
 
+  
+  
+
 export const getAllGoodsRequest = async () => {
   const axios = fetcher();
   try {

@@ -1,5 +1,5 @@
 import React from "react";
-
+import style from "./slider.module.css";
 import Carousel from "react-bootstrap/Carousel";
 
 const Image = ({ src }) => {
@@ -26,8 +26,10 @@ export const SliderUI = () => {
         <Carousel.Item>
           <Image src={x} />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Лимитированные кроссовки </h3>
+            <p>
+              Ваших <a className={style.colortext}>любимых</a> брендов
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
       ))}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ImageSlider } from "../../Slaider/Slaider";
+
 import style from "./home.module.css";
 import { VscCircleFilled } from "react-icons/vsc";
 import { SliderUI } from "./ui/slider";
