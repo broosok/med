@@ -9,7 +9,16 @@ const multer = require("multer");
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      console.log(origin);
+
+      callback(null, origin);
+    },
+    credentials: true,
+  })
+);
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, __dirname + "/uploads/");
