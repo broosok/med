@@ -1,0 +1,51 @@
+.text{
+    
+    
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.gridtop{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.gridbotton{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.contenercard{
+    height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  
+}
+.label{
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+    padding-top: 10px;
+
+}
+
+.profile__input{
+    height: 40px;
+   border-radius: 8px;
+   border: 1px solid gray;
+    width: 600px;
+    padding-left: 20px;
+    
+    
+}
+
+.profile__input2{
+    height: 40px;
+   border-radius: 8px;
+   border: 1px solid gray;
+    width: 250px;
+    padding-left: 20px;
+    
+    
+}

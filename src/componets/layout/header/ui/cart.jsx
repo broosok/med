@@ -1,18 +1,37 @@
 import { useUnit } from "effector-react";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { $cartShow, $groupCard, setCartShow, setQnty } from "../model/cart";
+import {
+  $cartShow,
+  $groupCard,
+  setCartShow,
+  setQnty,
+  clearCart,
+} from "../model/cart";
 import { MdClose } from "react-icons/md";
 import { orderRequest } from "../lib/order";
+import style from "./styles.module.css";
+
+import { create } from "lodash";
+import { createEffect, createEvent } from "effector";
+import { setNavigation } from "../../../navgiation";
+
+export const clearStore = createEvent("Clear store");
 
 export const CartUI = () => {
   const cartShow = useUnit($cartShow);
   const groupCart = useUnit($groupCard);
-
+  const [totalPrice, setTotalPrice] = useState(0);
   const orderFx = async (e) => {
     e.preventDefault();
 
     await orderRequest({ cart: groupCart });
+    setNavigation("/Order");
+    setCartShow(false);
+  };
+
+  const removeCartFx = () => {
+    clearCart();
   };
 
   if (!cartShow) return null;
@@ -31,11 +50,15 @@ export const CartUI = () => {
             <Info>
               <img src={x.image} />
               <Title>{x.title}</Title>
-              Осталось: {x.sizes.filter((y) => y.size === x.size)[0].qnty}
-              Цена: {x.price * x.qnty}
-              {"₽ "}
-              {x.price * x.qnty !== x.price ? `(${x.price}₽ за шт.)` : null}
-              <div>
+              <div className={style.cull}>
+                Осталось: {x.sizes.filter((y) => y.size === x.size)[0].qnty}
+              </div>
+              <div className={style.cull}>
+                Цена: {x.price * x.qnty}
+                {"₽ "}
+                {x.price * x.qnty !== x.price ? `(${x.price}₽ за шт.)` : null}
+              </div>
+              <div className={style.cull}>
                 Кол-во:
                 <Input
                   value={x.qnty}
@@ -51,12 +74,21 @@ export const CartUI = () => {
                   }
                 />
               </div>
+              <div className={style.cull2}>
+                И того: {x.price * x.qnty}
+                {"₽ "}
+              </div>
             </Info>
           ))}
         </Content>
         {groupCart.length > 0 ? (
           <Footer>
-            <button onClick={orderFx}>Оформить заказ</button>
+            <button className={style.but} onClick={orderFx}>
+              Продолжить оформления
+            </button>
+            <button className={style.delete} onClick={removeCartFx}>
+              Очистить корзину
+            </button>
           </Footer>
         ) : null}
       </Panel>
@@ -64,7 +96,13 @@ export const CartUI = () => {
   );
 };
 
-const Footer = styled.div``;
+const Footer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  font-size: 20px;
+  gap: 15px;
+`;
 
 const Info = styled.div`
   display: flex;
@@ -74,6 +112,7 @@ const Info = styled.div`
 const Title = styled.div`
   font-size: 20px;
   font-weight: 500;
+  font-weight: bold;
 `;
 
 const Wrapper = styled.div`

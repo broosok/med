@@ -42,3 +42,6 @@ $cart.on(setQnty, (store, { qnty, size, title }) => {
 });
 
 $cart.watch((store) => localStorage.setItem("cart", JSON.stringify(store)));
+
+export const clearCart = createEvent();
+$cart.on(clearCart, () => ({}))

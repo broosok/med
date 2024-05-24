@@ -11,6 +11,7 @@ import { Notfoundpage } from "./Pages/Notfoundpage";
 import { Info } from "./Pages/Info";
 import { Register } from "./Pages/Register";
 import { Cabinet } from "./Pages/Cabinet";
+import { Order } from "./Pages/Order";
 export const RoutesFC = () => {
   const location = useLocation();
 
@@ -28,6 +29,7 @@ export const RoutesFC = () => {
             <Route path="*" element={<Notfoundpage />} />
             <Route path="Register" element={<Register />} />
             <Route path="Cabinet" element={<Cabinet />} />
+            <Route path="Order" element={<Order />} />
           </Routes>
         </div>
       </div>

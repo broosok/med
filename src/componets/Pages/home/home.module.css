@@ -110,3 +110,25 @@
     padding-bottom: 10px;
     width: 100%;
 }
+
+.buttext{
+    cursor: pointer;
+    display: flex;
+   
+    border-top: 3px solid grey;
+    
+    padding-top: 15px;
+    font-weight: bold;
+    
+}
+.what{
+    color: black;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    font-weight: bold;
+}
+.downtext{
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+}

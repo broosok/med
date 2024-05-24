@@ -307,3 +307,47 @@
     }
   }
 
+  .but{
+    background: blueviolet;
+    
+    color: white;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    
+  }
+  .but:hover{
+    background: rgb(0, 0, 0);
+    transition-duration: 0.2s;
+    transition: color 500ms ease;
+  }
+  .cull{
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .cull2{
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    justify-content: right;
+  }
+  .delete{
+    display: flex;
+    background: rgba(21, 72, 79, 0.641);
+    justify-content: center;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold
+    
+  }
+
+  .delete:hover{
+    
+    background: rgb(0, 0, 0);
+    transition-duration: 0.2s;
+    transition: color 500ms ease;
+  }
+  
+  
+
