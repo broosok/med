@@ -35,7 +35,6 @@ class GoodsController {
         sizes: sizes_,
         brand,
         image: "http://localhost:5000/static/" + req.files[0].filename,
-       
       });
       await good.save();
 
@@ -59,7 +58,6 @@ class GoodsController {
 
   async orderGoods(req, res) {
     try {
-      
       const token = req.cookies.access_token;
       const user = jwt.verify(token, secret);
       const items = req.body.cart;
@@ -96,17 +94,15 @@ class GoodsController {
       });
 
       await Promise.all(upadtes);
-      
 
       const obj = {
-        user: user.id, 
+        user: user.id,
         items,
         date: dayjs(new Date()).format("YYYY-MM-DD"),
-        ...req.body 
-        
+        ...req.body,
       };
-      console.log(req.body)
-      // const order = await new orders(obj).save();
+
+      const order = await new orders(obj).save();
 
       res.json({ success: true, id: order._id });
     } catch (e) {

@@ -31,8 +31,8 @@ export function Order() {
     `,
         icon: "success",
       });
-      clearCart();
-      setNavigation("/cabinet");
+      /*       clearCart();
+      setNavigation("/cabinet"); */
     }
   };
   const groupCart = useUnit($groupCard);
@@ -165,7 +165,7 @@ export function Order() {
                     type="text"
                   />
                   <input
-                    name="intercom"
+                    name="entercom"
                     onChange={setInputValue}
                     className={style.profile__input3}
                     type="text"
