@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import style from "./Order.module.css";
 import { useUnit } from "effector-react";
 import { ContainerUI } from "../shared/ui/container";
@@ -14,8 +14,15 @@ import { setNavigation } from "../navgiation";
 import { orderRequest } from "../layout/header/lib/order";
 
 export function Order() {
+  const [form, setForm] = useState({});
+
+  const setInputValue = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
   const successOrder = async () => {
-    const res = await orderRequest({ cart: groupCart });
+    console.log(form);
+    const res = await orderRequest({ cart: groupCart, ...form });
+
     if (res.success) {
       Swal.fire({
         title: "Ваш заказ успешно оформлен!",
@@ -27,15 +34,6 @@ export function Order() {
       clearCart();
       setNavigation("/cabinet");
     }
-    /* Swal.fire({
-      title: "Ваш заказ успешно оформлен!",
-      html: `
-    Вы можете просмотреть его в <a href="../../Cabinet"> личном кабинете </a>
-  `,
-      icon: "success",
-    });
-    clearCart();
-    setNavigation("/"); */
   };
   const groupCart = useUnit($groupCard);
 
@@ -116,17 +114,23 @@ export function Order() {
                 <p className={style.label}>Email*</p>
                 <div>
                   <input
+                    name="email"
+                    onChange={setInputValue}
                     className={style.profile__input}
-                    placeholder="Введите Email"
+                    placeholder="Введите email"
                     type="text"
+                    required
                   />
                 </div>
                 <p className={style.label}>Улица*</p>
                 <div>
                   <input
+                    name="street"
+                    onChange={setInputValue}
                     className={style.profile__input}
                     placeholder="Введите улицу"
                     type="text"
+                    required
                   />
                 </div>
                 <div className={style.gridtext}>
@@ -135,11 +139,18 @@ export function Order() {
                 </div>
                 <div className={style.profile__grid2}>
                   <input
+                    name="numberhome"
+                    onChange={setInputValue}
                     className={style.profile__input2}
                     placeholder="Введите дом"
                     type="text"
                   />
-                  <input className={style.profile__input2} type="text" />
+                  <input
+                    name="flat"
+                    onChange={setInputValue}
+                    className={style.profile__input2}
+                    type="text"
+                  />
                 </div>
 
                 <div className={style.profile__grid}>
@@ -147,9 +158,24 @@ export function Order() {
                   <p className={style.label}>Этаж</p>
                   <p className={style.label}>Домофон</p>
 
-                  <input className={style.profile__input3} type="text" />
-                  <input className={style.profile__input3} type="text" />
-                  <input className={style.profile__input3} type="text" />
+                  <input
+                    name="entrance"
+                    onChange={setInputValue}
+                    className={style.profile__input3}
+                    type="text"
+                  />
+                  <input
+                    name="intercom"
+                    onChange={setInputValue}
+                    className={style.profile__input3}
+                    type="text"
+                  />
+                  <input
+                    name="floor"
+                    onChange={setInputValue}
+                    className={style.profile__input3}
+                    type="text"
+                  />
                 </div>
               </div>
             </div>

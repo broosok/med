@@ -8,8 +8,6 @@ import { ContainerUI } from "../shared/ui/container";
 import { getOrders } from "../hooks/order";
 import { OrdersUI } from "../orders";
 import styled from "styled-components";
-import MONKEY from "./assets/monkey.jpg";
-import CHAINS from "./assets/chains.mp4";
 
 export function Cabinet() {
   const [orders, setOrders] = useState([]);
@@ -27,13 +25,6 @@ export function Cabinet() {
   return (
     <ContainerUI>
       <div className={style.profile}>
-        <Video
-          id="chains"
-          src={CHAINS}
-          preload="auto"
-          autoPlay
-          allow="autoplay"
-        />
         {!user.username && <Navigate to="/login" replace={true} />}
         <div className={style.container}>
           <Group>
@@ -41,7 +32,12 @@ export function Cabinet() {
             <div className={style.profile__container}>
               <h3 className={style.profile__titel}>Фото профиля</h3>
               <div className={style.profile__user}>
-                <img className={style.profile__img} src={MONKEY} alt="" />
+                <img
+                  className={style.profile__img}
+                  src={
+                    "https://c-int-sf.smule.com/rs-s38-int/sing/performance/cover/3b/f8/b352f35f-7c02-4bca-86b0-eafba9cd0a33_1024.png"
+                  }
+                />
                 <button className={style.profile__btn}>Выберите файл</button>
                 <p className={style.profile__icon}>
                   <FaTrashCan />

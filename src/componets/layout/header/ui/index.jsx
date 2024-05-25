@@ -19,7 +19,6 @@ import { MobileMenuUI } from "./mobile-menu";
 import { setNavigation } from "../../../navgiation";
 import { $cart, setCartShow, $groupCard } from "../model/cart";
 import styled from "styled-components";
-import MONKEY from "../../../Pages/assets/monkey.jpg";
 
 export const HeaderUI = () => {
   const cart = useUnit($cart);
@@ -89,7 +88,9 @@ export const HeaderUI = () => {
         </div>
         <Img
           className={style.profile__img}
-          src={MONKEY}
+          src={
+            "https://c-int-sf.smule.com/rs-s38-int/sing/performance/cover/3b/f8/b352f35f-7c02-4bca-86b0-eafba9cd0a33_1024.png"
+          }
           alt=""
           onClick={() => setNavigation("/cabinet")}
         />

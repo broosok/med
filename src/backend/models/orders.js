@@ -8,8 +8,18 @@ const { Schema, model } = require("mongoose");
 const Order = new Schema({
   user: [{ type: String, ref: "User" }],
   items: { type: Array, required: true },
-  address: { type: String, required: true },
   date: { type: String, required: true },
+  email: { type: String, required: true },
+  street: { type: String, required: true },
+  numberhome: { type: String, required: true },
+  flat: { type: String, required: true },
+  entrance: { type: String, required: true },
+  entercom: { type: String, required: true },
+  floor: { type: String, required: true },
+
+
+  
+  
 });
 
 module.exports = model("order", Order);
