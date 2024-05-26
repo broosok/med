@@ -1,7 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2";
-
-export const BASE_URL = "http://localhost:5000";
+import { BASE_URL } from "../../../../shared/lib/config";
 
 const fetcher = () => {
   return axios.create({
