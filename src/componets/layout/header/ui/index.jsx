@@ -46,13 +46,15 @@ export const HeaderUI = () => {
 
   return (
     <header className={style.chelka}>
-      <div className={style.gorod}>
-        Ваш город<u>{city}</u>
-      </div>
+      {city ? (
+        <div className={style.gorod}>
+          Ваш город<u>{city}</u>
+        </div>
+      ) : null}
 
       <div className={style.logo}>
         <a className={style.logo_a} onClick={() => setNavigation("/")}>
-          DLVB
+          <img src="https://logo-suggestion.renderforest.com/suggestions-images/cab1/0e23/cab10e23ef2640f78c87f3259f7c5936.png" />
         </a>
       </div>
       <div className={style.menu}>

@@ -4,13 +4,15 @@
     gap: 32px;
     padding: 0px 8px;
     justify-content: center;
+    margin-top: 16px;
 }
 
 .card {
     width: 300px;
-    border-radius: 8px;
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .button_disabled {
@@ -23,6 +25,18 @@
     height: 300px;
     border-radius: 16px;
     object-fit: cover;
+
+    transition: .25s ease-in-out;
+    
+}
+
+.img_wrapper {
+    overflow: hidden;
+    max-height: 300px;
+}
+
+.card img:hover {
+    transform: scale(1.25);
 }
 
 @media screen and (max-width: 1370px) {
@@ -161,6 +175,7 @@
 
 .devider {
     width: 100%;
+    margin: 0px 48px;
     height: 8px;
-    background-color: grey;
+    background-color: rgb(236, 236, 236);
 }

@@ -4,6 +4,7 @@ import { chunk } from "lodash";
 import style from "./cards.module.css";
 import React from "react";
 import { setCart } from "../../../layout/header/model/cart";
+import { ContainerUI } from "../container";
 
 export const CardsUI = () => {
   const [goods, setGoods] = useState([]);
@@ -20,16 +21,18 @@ export const CardsUI = () => {
   const cardRow = chunk([...goods, ...fakeCards], 4);
 
   return (
-    <div className={style.cards}>
-      {cardRow.map((x) => (
-        <>
-          <div className={style.devider}></div>
-          {x.map((x) => (
-            <CardUI {...x} />
-          ))}
-        </>
-      ))}
-    </div>
+    <ContainerUI>
+      <div className={style.cards}>
+        {cardRow.map((x, i, a) => (
+          <>
+            {i > 0 && i < a.length - 1 && <div className={style.devider}></div>}
+            {x.map((x) => (
+              <CardUI {...x} />
+            ))}
+          </>
+        ))}
+      </div>
+    </ContainerUI>
   );
 };
 
@@ -71,7 +74,9 @@ export const CardUI = ({
 
   return (
     <div className={`${style.card} ${animation && style.animation}`}>
-      <img src={image} />
+      <div className={`${style.img_wrapper}`}>
+        <img src={image} />
+      </div>
       <div className={style.price}>{brand}</div>
       <div className={style.price}>{price.toLocaleString("ru")} ₽</div>
       <div className={style.title}>{title}</div>
