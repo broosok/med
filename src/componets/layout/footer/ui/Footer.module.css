@@ -93,7 +93,7 @@
     display: flex;
     order: 2;
     font-size: 75px;
-    
+    gap: 15px;
     
 }
 .pages img {
@@ -114,7 +114,7 @@
 }
 .pages1{
     display: flex;
-    padding-left: 15px;
+    
     font-size: 75px;
 
 }

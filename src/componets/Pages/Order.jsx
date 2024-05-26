@@ -2,6 +2,8 @@ import React, { useMemo, useState } from "react";
 import style from "./Order.module.css";
 import { useUnit } from "effector-react";
 import { ContainerUI } from "../shared/ui/container";
+import { Navigate } from "react-router-dom";
+import { $user } from "../models/user";
 import {
   $groupCard,
   setQnty,
@@ -15,6 +17,7 @@ import { orderRequest } from "../layout/header/lib/order";
 
 export function Order() {
   const [form, setForm] = useState({});
+  const user = useUnit($user);
 
   const setInputValue = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -31,10 +34,11 @@ export function Order() {
     `,
         icon: "success",
       });
-      /*       clearCart();
-      setNavigation("/cabinet"); */
+      clearCart();
+      setNavigation("/cabinet");
     }
   };
+
   const groupCart = useUnit($groupCard);
 
   const sum = useMemo(() => {
@@ -45,6 +49,7 @@ export function Order() {
     <>
       <ContainerUI>
         <div className={style.contenercard}>
+          {!user.username && <Navigate to="/Login" replace={true} />}
           <div className={style.gridtop}>
             <TableWrapper>
               <Table>

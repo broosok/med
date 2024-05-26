@@ -104,8 +104,7 @@ export function Cabinet() {
           <p className={style.profile__remove}>
             <span className={style.profile__remove__icon}>
               <FaTrashCan />
-            </span>{" "}
-            Удалить профиль
+            </span>
           </p>
         </div>
       </div>
