@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000;
 const authRouter = require("./authRouter");
 const goodsRouter = require("./goodsRouter");
+const userRouter = require("./userRouter");
 const cors = require("cors");
 var cookieParser = require("cookie-parser");
 const multer = require("multer");
@@ -12,8 +13,6 @@ const app = express();
 app.use(
   cors({
     origin: (origin, callback) => {
-      console.log(origin);
-
       callback(null, origin);
     },
     credentials: true,
@@ -35,6 +34,7 @@ module.exports = { upload };
 app.use(cookieParser());
 app.use(express.json());
 app.use("/auth", authRouter);
+app.use("/user", userRouter);
 app.use("/static", express.static(__dirname + "/uploads"));
 app.use("/goods", goodsRouter);
 

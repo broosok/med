@@ -100,12 +100,6 @@ export function Cabinet() {
               <button className={style.profile__btn2}>Изменить</button>
             </GroupForm>
           </GroupFormRow>
-          <h3 className={style.profile__titel}>Удалить профиль</h3>
-          <p className={style.profile__remove}>
-            <span className={style.profile__remove__icon}>
-              <FaTrashCan />
-            </span>
-          </p>
         </div>
       </div>
     </ContainerUI>

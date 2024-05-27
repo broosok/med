@@ -4,7 +4,6 @@ const controller = require("./authController");
 const { check } = require("express-validator");
 const authMiddlewere = require("./middleewaree/auth.Middleware");
 const roleMiddlewere = require("./middleewaree/role.Middleware");
-const authController = require("./authController");
 
 router.post(
   "/registration",
